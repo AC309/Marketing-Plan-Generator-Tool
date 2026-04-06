@@ -117,6 +117,14 @@ document.getElementById('planForm').addEventListener('submit', async (e) => {
   showLoading();
 
   try {
+    // Get reCAPTCHA token
+    let recaptchaToken = '';
+    try {
+      recaptchaToken = await grecaptcha.execute('6LcVPqosAAAAAM0LQXjmulHxOaLn0vf_L0ZgbU1S', { action: 'generate_plan' });
+    } catch (captchaErr) {
+      console.warn('reCAPTCHA failed, proceeding anyway:', captchaErr);
+    }
+
     // Use auth token if signed in, otherwise anon key
     let authToken = SUPABASE_ANON_KEY;
     if (currentUser) {
@@ -143,6 +151,7 @@ document.getElementById('planForm').addEventListener('submit', async (e) => {
         differentiators,
         email: emailAddress,
         newsletterOptIn,
+        recaptchaToken,
       }),
     });
 
