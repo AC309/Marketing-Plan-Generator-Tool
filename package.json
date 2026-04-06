@@ -1,0 +1,12 @@
+{
+  "name": "marketing-planner",
+  "version": "1.0.0",
+  "description": "AI-powered marketing plan generator for founders",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

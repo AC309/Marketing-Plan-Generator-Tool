@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lawton Learns — Get a Custom Marketing Plan for Your Business</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="supabase.min.js"></script>
+</head>
+<body>
+
+  <!-- User Badge (floating, shown when logged in) -->
+  <div id="userBadge" class="user-badge hidden">
+    <span id="userEmail"></span>
+    <button class="btn-text-sm" id="logoutBtn">Log out</button>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- 1. HERO SECTION                                             -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section class="hero" id="heroSection">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <p class="hero-powered">Powered by <strong>Lawton Learns</strong></p>
+        <h1>Get a Custom Marketing Plan for Your Business</h1>
+        <p class="hero-sub">Answer a few quick questions and get a tailored marketing plan built around your business, audience, goals, and budget.</p>
+        <a href="#formSection" class="btn-primary hero-cta">Get My Marketing Plan</a>
+        <p class="hero-micro">Hiring outside marketing help can cost thousands. This tool gives you a tailored marketing plan for free.</p>
+      </div>
+      <div class="hero-preview">
+        <div class="preview-card">
+          <p class="preview-title">Your Plan Includes</p>
+          <ul class="preview-list">
+            <li><span class="preview-icon">&#10003;</span> Priority marketing channels</li>
+            <li><span class="preview-icon">&#10003;</span> Messaging angles</li>
+            <li><span class="preview-icon">&#10003;</span> Lead generation ideas</li>
+            <li><span class="preview-icon">&#10003;</span> Content recommendations</li>
+            <li><span class="preview-icon">&#10003;</span> AI workflows</li>
+            <li><span class="preview-icon">&#10003;</span> 30-day action plan</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- FORM SECTION                                                -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section class="section form-section" id="formSection">
+    <div class="container">
+      <div class="form-header">
+        <h2 class="section-title">Tell Us About Your Business</h2>
+        <p class="form-intro">Fill out the form below and we'll generate a tailored marketing plan you can start using right away.</p>
+      </div>
+
+      <div class="form-card">
+        <form id="planForm" novalidate>
+
+          <!-- Field 1: Business Description -->
+          <div class="field">
+            <label for="businessDescription">Business description</label>
+            <p class="field-helper">Describe what your business does, what you sell, and what makes it different.</p>
+            <textarea
+              id="businessDescription"
+              name="businessDescription"
+              placeholder="We help independent fitness coaches create branded meal plans and training programs for busy professionals."
+              rows="4"
+              required
+            ></textarea>
+            <p class="field-error" id="businessDescriptionError">Please describe your business.</p>
+          </div>
+
+          <!-- Field 2: Target Audience -->
+          <div class="field">
+            <label for="targetAudience">Target audience</label>
+            <p class="field-helper">Who are you trying to reach?</p>
+            <input
+              type="text"
+              id="targetAudience"
+              name="targetAudience"
+              placeholder="Independent fitness coaches aged 28-45"
+              required
+            />
+            <p class="field-error" id="targetAudienceError">Please describe your target audience.</p>
+          </div>
+
+          <!-- Field 3: Audience Challenges -->
+          <div class="field">
+            <label for="audienceChallenges">Target audience primary challenges</label>
+            <p class="field-helper">What are the biggest problems, frustrations, or pain points your audience is dealing with?</p>
+            <textarea
+              id="audienceChallenges"
+              name="audienceChallenges"
+              placeholder="Struggling to scale beyond 1-on-1 clients, no branded content, limited tech skills"
+              rows="3"
+              required
+            ></textarea>
+            <p class="field-error" id="audienceChallengesError">Please describe your audience's challenges.</p>
+          </div>
+
+          <!-- Field 4: Stage -->
+          <div class="field">
+            <label for="stage">Stage</label>
+            <select id="stage" name="stage" required>
+              <option value="Idea / Pre-launch">Idea / Pre-launch</option>
+              <option value="Early revenue" selected>Early revenue</option>
+              <option value="Growth">Growth</option>
+            </select>
+          </div>
+
+          <!-- Field 5: Budget -->
+          <div class="field">
+            <label for="marketingBudget">Available monthly marketing budget</label>
+            <select id="marketingBudget" name="marketingBudget" required>
+              <option value="$0-$500" selected>$0 &ndash; $500</option>
+              <option value="$500-$2,500">$500 &ndash; $2,500</option>
+              <option value="$2,500+">$2,500+</option>
+            </select>
+          </div>
+
+          <!-- Field 6: Primary Marketing Goal -->
+          <div class="field">
+            <label for="primaryMarketingGoal">Primary marketing goal</label>
+            <select id="primaryMarketingGoal" name="primaryMarketingGoal" required>
+              <option value="Awareness">Awareness</option>
+              <option value="Leads" selected>Leads</option>
+              <option value="Sales">Sales</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <!-- Field 7: Current Marketing Channels -->
+          <div class="field">
+            <label for="currentMarketingChannels">Current marketing channels in use</label>
+            <p class="field-helper">List any marketing channels you're currently using, such as email, content, SEO, social media, paid ads, partnerships, cold outreach, referrals, or events.</p>
+            <textarea
+              id="currentMarketingChannels"
+              name="currentMarketingChannels"
+              placeholder="Instagram, email newsletter, occasional blog posts"
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- Field 8: Channel Performance -->
+          <div class="field">
+            <label for="currentChannelPerformance">Are those channels seeing success?</label>
+            <p class="field-helper">Tell us what seems to be working, what feels underwhelming, and where results are unclear.</p>
+            <textarea
+              id="currentChannelPerformance"
+              name="currentChannelPerformance"
+              placeholder="Instagram gets engagement but few conversions. Email has a small list but decent open rates. Blog traffic is low."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- Field 9: Differentiators -->
+          <div class="field">
+            <label for="differentiators">What makes your business different from alternatives?</label>
+            <p class="field-helper">Share what makes your business stand out from competitors, substitutes, or the status quo.</p>
+            <textarea
+              id="differentiators"
+              name="differentiators"
+              placeholder="We combine AI-powered personalization with certified nutrition guidance, something no other platform offers at our price point."
+              rows="3"
+            ></textarea>
+          </div>
+
+          <!-- Field 10: Email -->
+          <div class="field">
+            <label for="emailAddress">Email address</label>
+            <input
+              type="email"
+              id="emailAddress"
+              name="emailAddress"
+              placeholder="you@example.com"
+              required
+            />
+            <p class="field-error" id="emailAddressError">Please enter a valid email address.</p>
+          </div>
+
+          <!-- Field 11: Newsletter Checkbox -->
+          <div class="field checkbox-field">
+            <label class="checkbox-label">
+              <input type="checkbox" id="newsletterOptIn" name="newsletterOptIn" />
+              <span class="checkbox-custom"></span>
+              <span>Yes — sign me up for the Lawton Learns newsletter</span>
+            </label>
+            <p class="field-disclosure">We'll send your marketing plan to your inbox. If you opt in, you'll also get useful AI tips, prompts, and tutorials from Lawton Learns to help you use AI more effectively. Unsubscribe anytime.</p>
+          </div>
+
+          <!-- Submit -->
+          <button type="submit" class="btn-primary btn-submit" id="generateBtn">
+            Get My Marketing Plan
+          </button>
+
+          <p class="form-micro">Your plan is tailored to the information you provide, so the more specific you are, the better your recommendations will be.</p>
+
+          <div id="errorMsg" class="error-msg hidden"></div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- FINAL CTA SECTION                                           -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section class="section final-cta-section">
+    <div class="container final-cta-content">
+      <h2>Ready to get a smarter marketing plan?</h2>
+      <p>Fill out the form and get a practical plan built around your business, audience, and goals.</p>
+      <a href="#formSection" class="btn-primary final-cta-btn">Get My Marketing Plan</a>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- LOADING STATE (hidden by default)                           -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <div id="loadingState" class="loading-overlay hidden">
+    <div class="loading-inner">
+      <div class="spinner"></div>
+      <p>Building your tailored marketing plan&hellip;</p>
+      <p class="loading-sub">This usually takes 30&ndash;60 seconds.</p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- ACCOUNT REQUIRED GATE (hidden by default)                   -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="accountGate" class="hidden">
+    <div class="container">
+      <div class="auth-card">
+        <div class="auth-icon">&#128640;</div>
+        <h2>Want to generate another plan?</h2>
+        <p class="auth-sub">Your first plan was free. Create a free Lawton Learns account to generate more plans. It only takes a few seconds.</p>
+
+        <form id="accountForm" class="auth-form">
+          <div class="field">
+            <input type="email" id="accountEmail" placeholder="you@example.com" required />
+          </div>
+          <button type="submit" class="btn-primary" id="accountBtn">Create Free Account</button>
+        </form>
+
+        <div id="accountSent" class="hidden">
+          <div class="auth-sent-icon">&#9993;</div>
+          <p class="auth-sent-msg">Check your inbox! Click the link to activate your account, then come back and generate a new plan.</p>
+          <p class="auth-sent-hint">Didn't get it? Check spam or <button class="btn-link" id="accountResend">resend</button></p>
+        </div>
+
+        <div id="accountError" class="error-msg hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- AUTH GATE (hidden by default)                               -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="authGate" class="hidden">
+    <div class="container">
+      <div class="auth-card">
+        <div class="auth-icon">&#128274;</div>
+        <h2>Your plan is ready!</h2>
+        <p class="auth-sub">Enter your email to unlock your personalized marketing plan.</p>
+
+        <form id="authForm" class="auth-form">
+          <div class="field">
+            <input type="email" id="authEmail" placeholder="you@example.com" required />
+          </div>
+          <button type="submit" class="btn-primary" id="authBtn">Send Magic Link</button>
+        </form>
+
+        <div id="authSent" class="hidden">
+          <div class="auth-sent-icon">&#9993;</div>
+          <p class="auth-sent-msg">We sent a confirmation link to your email.</p>
+          <p class="auth-sent-detail">Click the link to verify your email, then you'll be redirected back here to view your full marketing plan.</p>
+          <p class="auth-sent-hint">Didn't get it? Check spam or <button class="btn-link" id="authResend">resend</button></p>
+        </div>
+
+        <div id="authError" class="error-msg hidden"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- RESULTS (hidden by default)                                 -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <section id="results" class="hidden">
+    <div class="container">
+      <div class="results-header">
+        <h2>Your Marketing Plan</h2>
+        <p class="results-sub">Based on your business details, here's a tailored strategy to drive growth.</p>
+        <div class="results-actions">
+          <button class="btn-download" id="downloadPdfBtn">&#8681; Download PDF</button>
+          <button class="btn-download btn-download-alt" id="downloadMdBtn">&#8681; Download Text</button>
+        </div>
+      </div>
+
+      <div id="cards"></div>
+
+      <!-- CTA -->
+      <div class="cta-card">
+        <h2>Want help turning this into a real system?</h2>
+        <p>Lawton Learns shows founders how to build AI-powered marketing and operations systems step by step.</p>
+        <a href="https://lawtonlearns.com" target="_blank" rel="noopener" class="btn-cta">Explore Lawton Learns</a>
+      </div>
+
+      <!-- Regenerate -->
+      <div class="regenerate">
+        <button class="btn-ghost" id="regenerateBtn">Start Over</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <!-- FOOTER                                                      -->
+  <!-- ════════════════════════════════════════════════════════════ -->
+  <footer class="site-footer">
+    <div class="container">
+      <p>Powered by <strong>Lawton Learns</strong> &middot; AI tools for founders</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
